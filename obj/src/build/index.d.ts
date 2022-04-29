@@ -1,0 +1,1 @@
+export { PasswordsClientFactory } from './PasswordsClientFactory';
