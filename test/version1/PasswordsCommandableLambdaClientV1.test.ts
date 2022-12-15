@@ -1,9 +1,9 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
 
 import { PasswordsClientFixtureV1 } from './PasswordsClientFixtureV1';
-import { PasswordsLambdaClientV1 } from '../../src/version1/PasswordsLambdaClientV1';
+import { PasswordsCommandableLambdaClientV1 } from '../../src/version1/PasswordsCommandableLambdaClientV1';
 
-suite('PasswordsLambdaClient', ()=> {
+suite('PasswordsCommandableLambdaClient', ()=> {
     let AWS_LAMDBA_ARN = process.env["AWS_LAMDBA_ARN"] || "";
     let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
     let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
@@ -24,11 +24,11 @@ suite('PasswordsLambdaClient', ()=> {
     if (lambdaConfig.getAsNullableString("connection.protocol") != "aws")
         return;
 
-    let client: PasswordsLambdaClientV1;
+    let client: PasswordsCommandableLambdaClientV1;
     let fixture: PasswordsClientFixtureV1;
 
     setup(async () => {
-        client = new PasswordsLambdaClientV1();
+        client = new PasswordsCommandableLambdaClientV1();
         client.configure(lambdaConfig);
 
         fixture = new PasswordsClientFixtureV1(client);

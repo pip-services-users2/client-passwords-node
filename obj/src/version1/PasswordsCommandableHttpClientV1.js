@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PasswordsCommandableGrpcClientV1 = void 0;
+exports.PasswordsCommandableHttpClientV1 = void 0;
 const pip_services3_commons_nodex_1 = require("pip-services3-commons-nodex");
-const pip_services3_grpc_nodex_1 = require("pip-services3-grpc-nodex");
-class PasswordsCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.CommandableGrpcClient {
+const pip_services3_rpc_nodex_1 = require("pip-services3-rpc-nodex");
+class PasswordsCommandableHttpClientV1 extends pip_services3_rpc_nodex_1.CommandableHttpClient {
     constructor(config) {
         super('v1/passwords');
         if (config != null)
@@ -53,8 +53,7 @@ class PasswordsCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.Comman
                 user_id: userId,
                 password: password
             });
-            let authenticated = result != null ? result.authenticated : false;
-            return authenticated;
+            return result != null ? result.authenticated : false;
         });
     }
     changePassword(correlationId, userId, oldPassword, newPassword) {
@@ -92,5 +91,5 @@ class PasswordsCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.Comman
         });
     }
 }
-exports.PasswordsCommandableGrpcClientV1 = PasswordsCommandableGrpcClientV1;
-//# sourceMappingURL=PasswordsCommandableGrpcClientV1.js.map
+exports.PasswordsCommandableHttpClientV1 = PasswordsCommandableHttpClientV1;
+//# sourceMappingURL=PasswordsCommandableHttpClientV1.js.map

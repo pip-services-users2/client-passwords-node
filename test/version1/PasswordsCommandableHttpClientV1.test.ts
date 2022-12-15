@@ -6,7 +6,7 @@ import { ConsoleLogger } from 'pip-services3-components-nodex';
 import { PasswordsMemoryPersistence } from 'service-passwords-node';
 import { PasswordsController } from 'service-passwords-node';
 import { PasswordsHttpServiceV1 } from 'service-passwords-node';
-import { PasswordsHttpClientV1 } from '../../src/version1/PasswordsHttpClientV1';
+import { PasswordsCommandableHttpClientV1 } from '../../src/version1/PasswordsCommandableHttpClientV1';
 import { PasswordsClientFixtureV1 } from './PasswordsClientFixtureV1';
 
 var httpConfig = ConfigParams.fromTuples(
@@ -15,9 +15,9 @@ var httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('PasswordsHttpClientV1', ()=> {
+suite('PasswordsCommandableHttpClientV1', ()=> {
     let service: PasswordsHttpServiceV1;
-    let client: PasswordsHttpClientV1;
+    let client: PasswordsCommandableHttpClientV1;
     let fixture: PasswordsClientFixtureV1;
 
     suiteSetup(async () => {
@@ -32,12 +32,12 @@ suite('PasswordsHttpClientV1', ()=> {
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('service-passwords', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-passwords', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-passwords', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-passwords', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
 
-        client = new PasswordsHttpClientV1();
+        client = new PasswordsCommandableHttpClientV1();
         client.setReferences(references);
         client.configure(httpConfig);
 

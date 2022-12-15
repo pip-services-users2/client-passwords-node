@@ -27,14 +27,12 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('get_password_info', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toPasswordInfo(response.getInfo()) : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -47,14 +45,12 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('set_temp_password', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? response.getPassword() : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -68,13 +64,11 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('set_password', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -87,13 +81,11 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('delete_password', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -107,14 +99,12 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('authenticate', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? response.getAuthenticated() : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -129,13 +119,11 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('change_password', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -149,14 +137,12 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('validate_code', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
                 return response ? response.getValid() : null;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -171,13 +157,11 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('reset_password', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -190,13 +174,11 @@ class PasswordsGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcClient {
                 let response = yield this.call('recover_password', correlationId, request);
                 if (response.error != null)
                     throw PasswordsGrpcConverterV1_1.PasswordsGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }

@@ -26,13 +26,12 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
             return response ? PasswordsGrpcConverterV1.toPasswordInfo(response.getInfo()) : null;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }       
+        }    
     }
 
     public async setTempPassword(correlationId: string, userId: string): Promise<string> {
@@ -47,13 +46,12 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
             return response ? response.getPassword() : null;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }      
+        }  
     }
 
     public async setPassword(correlationId: string, userId: string, password: string): Promise<void> {
@@ -68,12 +66,11 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
 
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }      
+        }    
     }
 
     public async deletePassword(correlationId: string, userId: string): Promise<void> {
@@ -88,12 +85,11 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
 
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }      
+        }    
     }
 
     public async authenticate(correlationId: string, userId: string, password: string): Promise<boolean> {
@@ -109,12 +105,11 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
             return response ? response.getAuthenticated() : null;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -131,11 +126,11 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
 
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
+
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -152,12 +147,11 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
             
+            timing.endTiming();
             return response ? response.getValid() : null;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -174,11 +168,10 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
 
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -193,11 +186,10 @@ export class PasswordsGrpcClientV1 extends GrpcClient implements IPasswordsClien
 
             if (response.error != null)
                 throw PasswordsGrpcConverterV1.toError(response.error);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
   

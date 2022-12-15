@@ -1,13 +1,13 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
-import { CommandableGrpcClient } from 'pip-services3-grpc-nodex';
+import { CommandableLambdaClient } from 'pip-services3-aws-nodex';
 
 import { UserPasswordInfoV1 } from './UserPasswordInfoV1';
 import { IPasswordsClientV1 } from './IPasswordsClientV1';
 
-export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient implements IPasswordsClientV1 {
+export class PasswordsCommandableLambdaClientV1 extends CommandableLambdaClient implements IPasswordsClientV1 {
 
     constructor(config?: any) {
-        super('v1/passwords');
+        super('passwords');
 
         if (config != null)
             this.configure(ConfigParams.fromValue(config));
@@ -20,7 +20,7 @@ export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient impl
             {
                 user_id: userId
             }
-        );    
+        );
     }
 
     public async setTempPassword(correlationId: string, userId: string): Promise<string> {
@@ -55,7 +55,7 @@ export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient impl
     }
 
     public async authenticate(correlationId: string, userId: string, password: string): Promise<boolean> {
-        let result = await this.callCommand<any>(
+        let result = await this.callCommand(
             'authenticate',
             correlationId,
             {
@@ -63,8 +63,7 @@ export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient impl
                 password: password
             }
         );
-        let authenticated = result != null ? result.authenticated : false;
-        return authenticated;
+        return result != null ? result.authenticated : false;
     }
 
     public async changePassword(correlationId: string, userId: string, oldPassword: string, newPassword: string): Promise<void> {
@@ -80,7 +79,7 @@ export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient impl
     }
 
     public async validateCode(correlationId: string, userId: string, code: string): Promise<boolean> {
-        let result = await this.callCommand<any>(
+        let result = await this.callCommand(
             'validate_code',
             correlationId,
             {

@@ -20,12 +20,12 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
         let timing = this.instrument(correlationId, 'passwords.get_password_info');
 
         try {
-            return await this._controller.getPasswordInfo(correlationId, userId);
+            let res = await this._controller.getPasswordInfo(correlationId, userId);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -33,12 +33,12 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
         let timing = this.instrument(correlationId, 'passwords.set_temp_password');
         
         try {
-            return await this._controller.setTempPassword(correlationId, userId);
+            let res = await this._controller.setTempPassword(correlationId, userId);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -47,11 +47,10 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
         
         try {
             await this._controller.setPassword(correlationId, userId, password);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -60,11 +59,10 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
 
         try {
             await this._controller.deletePassword(correlationId, userId);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -72,12 +70,12 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
         let timing = this.instrument(correlationId, 'passwords.authenticate');
 
         try {
-            return await this._controller.authenticate(correlationId, userId, password);
+            let res = await this._controller.authenticate(correlationId, userId, password);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -85,12 +83,12 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
         let timing = this.instrument(correlationId, 'passwords.change_password');
         
         try {
-            return await this._controller.changePassword(correlationId, userId, oldPassword, newPassword);
+            let res = await this._controller.changePassword(correlationId, userId, oldPassword, newPassword);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -98,12 +96,12 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
         let timing = this.instrument(correlationId, 'passwords.validate_code');
         
         try {
-            return await this._controller.validateCode(correlationId, userId, code);
+            let res = await this._controller.validateCode(correlationId, userId, code);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -112,11 +110,10 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
         
         try {
             await this._controller.resetPassword(correlationId, userId, code, password);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -125,11 +122,10 @@ export class PasswordsDirectClientV1 extends DirectClient<any> implements IPassw
         
         try {
             await this._controller.recoverPassword(correlationId, userId);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 }

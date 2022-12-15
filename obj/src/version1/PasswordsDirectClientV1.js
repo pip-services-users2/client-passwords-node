@@ -25,14 +25,13 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'passwords.get_password_info');
             try {
-                return yield this._controller.getPasswordInfo(correlationId, userId);
+                let res = yield this._controller.getPasswordInfo(correlationId, userId);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -40,14 +39,13 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'passwords.set_temp_password');
             try {
-                return yield this._controller.setTempPassword(correlationId, userId);
+                let res = yield this._controller.setTempPassword(correlationId, userId);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -56,13 +54,11 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
             let timing = this.instrument(correlationId, 'passwords.set_password');
             try {
                 yield this._controller.setPassword(correlationId, userId, password);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -71,13 +67,11 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
             let timing = this.instrument(correlationId, 'passwords.delete_password');
             try {
                 yield this._controller.deletePassword(correlationId, userId);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -85,14 +79,13 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'passwords.authenticate');
             try {
-                return yield this._controller.authenticate(correlationId, userId, password);
+                let res = yield this._controller.authenticate(correlationId, userId, password);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -100,14 +93,13 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'passwords.change_password');
             try {
-                return yield this._controller.changePassword(correlationId, userId, oldPassword, newPassword);
+                let res = yield this._controller.changePassword(correlationId, userId, oldPassword, newPassword);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -115,14 +107,13 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'passwords.validate_code');
             try {
-                return yield this._controller.validateCode(correlationId, userId, code);
+                let res = yield this._controller.validateCode(correlationId, userId, code);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -131,13 +122,11 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
             let timing = this.instrument(correlationId, 'passwords.reset_password');
             try {
                 yield this._controller.resetPassword(correlationId, userId, code, password);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -146,13 +135,11 @@ class PasswordsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
             let timing = this.instrument(correlationId, 'passwords.recover_password');
             try {
                 yield this._controller.recoverPassword(correlationId, userId);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }

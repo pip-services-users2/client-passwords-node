@@ -1,10 +1,10 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
-import { CommandableGrpcClient } from 'pip-services3-grpc-nodex';
+import { CommandableHttpClient } from 'pip-services3-rpc-nodex';
 
 import { UserPasswordInfoV1 } from './UserPasswordInfoV1';
 import { IPasswordsClientV1 } from './IPasswordsClientV1';
 
-export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient implements IPasswordsClientV1 {
+export class PasswordsCommandableHttpClientV1 extends CommandableHttpClient implements IPasswordsClientV1 {
 
     constructor(config?: any) {
         super('v1/passwords');
@@ -20,7 +20,7 @@ export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient impl
             {
                 user_id: userId
             }
-        );    
+        );  
     }
 
     public async setTempPassword(correlationId: string, userId: string): Promise<string> {
@@ -63,8 +63,7 @@ export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient impl
                 password: password
             }
         );
-        let authenticated = result != null ? result.authenticated : false;
-        return authenticated;
+        return result != null ? result.authenticated : false;
     }
 
     public async changePassword(correlationId: string, userId: string, oldPassword: string, newPassword: string): Promise<void> {
@@ -88,6 +87,7 @@ export class PasswordsCommandableGrpcClientV1 extends CommandableGrpcClient impl
                 code: code
             }
         );
+
         return result != null ? result.valid : null;
     }
 

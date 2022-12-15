@@ -1,7 +1,7 @@
-import { CommandableHttpClient } from 'pip-services3-rpc-nodex';
+import { CommandableLambdaClient } from 'pip-services3-aws-nodex';
 import { UserPasswordInfoV1 } from './UserPasswordInfoV1';
 import { IPasswordsClientV1 } from './IPasswordsClientV1';
-export declare class PasswordsHttpClientV1 extends CommandableHttpClient implements IPasswordsClientV1 {
+export declare class PasswordsCommandableLambdaClientV1 extends CommandableLambdaClient implements IPasswordsClientV1 {
     constructor(config?: any);
     getPasswordInfo(correlationId: string, userId: string): Promise<UserPasswordInfoV1>;
     setTempPassword(correlationId: string, userId: string): Promise<string>;
